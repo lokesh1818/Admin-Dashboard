@@ -1,51 +1,46 @@
 .dashboard {
-  padding: 20px;
+    padding: 20px;
 }
 
-/* KPI CARDS */
 .cards {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
 .card {
-  flex: 1;
-  background: #f8fafc;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    flex: 1;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .card h3 {
-  margin-bottom: 10px;
-  color: #555;
+    margin-bottom: 10px;
+    color: #555;
 }
 
-/* CHART SECTION */
 .charts {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
-/* CHART CARD */
 .chart-card {
-  width: 400px;
-  height: 400px;
-  background: #f8fafc;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    width: 400px;
+    height: 400px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* 🔥 IMPORTANT FIX */
 .chart-container {
-  position: relative;
-  width: 100%;
-  height: 300px;
+    position: relative;
+    width: 100%;
+    height: 300px;
 }
 
-/* CLEAN CANVAS */
 canvas {
-  max-width: 100%;
+    max-width: 100%;
 }

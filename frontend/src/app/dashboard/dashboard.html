@@ -1,35 +1,35 @@
 <div class="dashboard">
 
-  <h2>Dashboard</h2>
+    <h2>Dashboard</h2>
 
-  <!-- KPI CARDS -->
-  <div class="cards">
-    <div class="card">
-      <h3>Total Users</h3>
-      <p>{{ totalUsers }}</p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Users</h3>
+            <p>{{ totalUsers }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Active Users</h3>
+            <p>{{ activeUsers }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Inactive Users</h3>
+            <p>{{ inactiveUsers }}</p>
+        </div>
     </div>
 
-    <div class="card">
-      <h3>Active Users</h3>
-      <p>{{ activeUsers }}</p>
+
+    <div class="charts">
+        <div class="chart-card">
+            <h3>User Distribution</h3>
+
+            <div class="chart-container">
+                <canvas id="pieChart"></canvas>
+            </div>
+
+        </div>
     </div>
-
-    <div class="card">
-      <h3>Inactive Users</h3>
-      <p>{{ inactiveUsers }}</p>
-    </div>
-  </div>
-
-  <!-- CHART -->
-  <div class="charts">
-    <div class="chart-card">
-      <h3>User Distribution</h3>
-
-      <div class="chart-container">
-        <canvas id="pieChart"></canvas>
-      </div>
-
-    </div>
-  </div>
 
 </div>

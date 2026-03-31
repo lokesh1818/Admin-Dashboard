@@ -1,33 +1,32 @@
 <div *ngIf="isLoggedIn(); else loginPage" class="layout">
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>Admin</h2>
 
-    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a routerLink="/users" routerLinkActive="active">Users</a>
-  </div>
+    <div class="sidebar">
+        <h2>Admin</h2>
 
-  <!-- Main -->
-  <div class="main">
-
-    <!-- Topbar -->
-    <div class="topbar">
-      <div></div>
-
-      <div class="user">
-        Welcome, {{ getUserName() }} 👋
-        <button (click)="logout()">Logout</button>
-      </div>
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/users" routerLinkActive="active">Users</a>
     </div>
 
-    <!-- Page Content -->
-    <router-outlet></router-outlet>
+    <div class="main">
 
-  </div>
+
+        <div class="topbar">
+            <div></div>
+
+            <div class="user">
+                Welcome, {{ getUserName() }} 👋
+                <button (click)="logout()">Logout</button>
+            </div>
+        </div>
+
+
+        <router-outlet></router-outlet>
+
+    </div>
 </div>
 
-<!-- Login Page -->
+
 <ng-template #loginPage>
-  <app-login></app-login>
+    <app-login></app-login>
 </ng-template>

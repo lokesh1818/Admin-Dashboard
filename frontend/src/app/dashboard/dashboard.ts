@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false   // ✅ FIXES OVERSIZE
+        maintainAspectRatio: false   
       }
     });
   }

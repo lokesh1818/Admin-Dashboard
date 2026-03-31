@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login';   // ✅ ADD THIS
+import { LoginComponent } from './login/login';   
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login';   // ✅ ADD THIS
     RouterOutlet,
     RouterModule,
     CommonModule,
-    LoginComponent   // ✅ ADD THIS HERE
+    LoginComponent   
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']

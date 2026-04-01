@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api';
 import Chart from 'chart.js/auto';
@@ -18,11 +18,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
   inactiveUsers = 0;
 
   private sub!: Subscription;
+  private chart: any;   
 
-  constructor(private api: ApiService) {}
+  constructor(
+    private api: ApiService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.loadStats();
+
     this.sub = this.api.userUpdated.subscribe(() => {
       this.loadStats();
     });
@@ -30,6 +35,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
   }
 
   loadStats() {
@@ -41,7 +50,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.activeUsers = users.filter(u => u.status === 'active').length;
       this.inactiveUsers = users.filter(u => u.status === 'inactive').length;
 
-      setTimeout(() => this.renderChart(), 100);
+      this.cdr.detectChanges();
+
+      this.renderChart();  
     });
   }
 
@@ -50,10 +61,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     if (!canvas) return;
 
-    const existing = Chart.getChart(canvas);
-    if (existing) existing.destroy();
+    if (this.chart) {
+      this.chart.destroy();
+    }
 
-    new Chart(canvas, {
+    this.chart = new Chart(canvas, {
       type: 'pie',
       data: {
         labels: ['Active', 'Inactive'],

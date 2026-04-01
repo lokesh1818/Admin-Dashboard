@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api';
@@ -25,12 +25,14 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   private sub!: Subscription;
 
-  constructor(private api: ApiService) {}
+  constructor(
+    private api: ApiService,
+    private cdr: ChangeDetectorRef   
+  ) {}
 
   ngOnInit() {
     this.loadUsers();
 
-    // 🔥 Listen for updates
     this.sub = this.api.userUpdated.subscribe(() => {
       this.loadUsers();
     });
@@ -44,6 +46,8 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.api.getUsers().subscribe((data: any[]) => {
       this.users = data;
       this.filteredUsers = data;
+
+      this.cdr.detectChanges();   
     });
   }
 
@@ -53,15 +57,17 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.api.addUser(this.newUser).subscribe(() => {
       this.newUser = { name: '', email: '', status: 'active' };
 
-      // 🔥 Notify all components
       this.api.userUpdated.next();
+
+      this.loadUsers(); 
     });
   }
 
   deleteUser(id: string) {
     this.api.deleteUser(id).subscribe(() => {
-      // 🔥 Notify all components
       this.api.userUpdated.next();
+
+      this.loadUsers(); // 
     });
   }
 
